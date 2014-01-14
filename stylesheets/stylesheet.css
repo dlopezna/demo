@@ -90,10 +90,11 @@ header h2 {
 }
 
 .inner {
-  width: 620px;
+  width: 1024px;
   margin: 0 auto;
 }
-
+.inner #left_content{width:404px;float:left;}
+.inner #right_content{width:620px;float:left;}
 #container .inner img {
   max-width: 100%;
 }
