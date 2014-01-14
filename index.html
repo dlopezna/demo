@@ -15,9 +15,9 @@
     $(function() {
     $( "#slider-range" ).slider({
       range: true,
-      min: 0,
-      max: 500,
-      values: [ 75, 300 ],
+      min: 10,
+      max: 100,
+      values: [ 16, 50 ],
       slide: function( event, ui ) {
         $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
       }
@@ -67,7 +67,8 @@
         <section id="main_content">
         <div id="left_content">
           <h3>Filtros</h3>
-          Edad: Entre 30-45<br/>
+          <label for="amount">Edad:</label>
+  		<input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;">
           <div id="slider-range"></div>
           Sexo: Ambos<br/>
           Radio: 2km<br/>
