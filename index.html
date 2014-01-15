@@ -96,17 +96,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
     $( "#amount" ).html("entre " + $( "#slider-range" ).slider( "values", 0 ) +
       " - " + $( "#slider-range" ).slider( "values", 1 ) );
     
-    $( "#slider-radio" ).slider({
-        range: false,
-        min: 100,
-        max: 10000,
-        value: 500
-        slide: function( event, ui ) {
-          $( "#radio" ).html( ui.value + " m.");
-        }
-      });
-      $( "#radio" ).html($( "#slider-radio" ).slider( "value" ) + " m." );
-  });
+    $( "#slider-radio" ).slider();
   </script>
     
     <!--[if lt IE 9]>
@@ -136,8 +126,8 @@ google.maps.event.addDomListener(window, 'load', initialize);
           Sexo: 
           <div id="sexo">
     <input type="radio" id="sexo1" name="sexo" checked="checked"><label for="sexo1">Todos</label>
-    <input type="radio" id="sexo2" name=""sexo" ><label for="sexo2">Hombres</label>
-    <input type="radio" id="sexo3" name=""sexo"><label for="sexo3">Mujeres</label>
+    <input type="radio" id="sexo2" name="sexo" ><label for="sexo2">Hombres</label>
+    <input type="radio" id="sexo3" name="sexo"><label for="sexo3">Mujeres</label>
   </div>
           
         <label for="radio">Radio:</label>
