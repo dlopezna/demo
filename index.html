@@ -13,48 +13,68 @@
         padding: 0px
       }
     </style>
-    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"> </script>
-    
-    <script type="text/javascript">
-    var initialLocation;
-    var siberia = new google.maps.LatLng(60, 105);
-    var newyork = new google.maps.LatLng(40.69847032728747, -73.9514422416687);
-    var browserSupportFlag =  new Boolean();
-    
-      function initialize() {
-    	  var myOptions = {
-    			    zoom: 6,
-    			    mapTypeId: google.maps.MapTypeId.ROADMAP
-    			  };
-    			  var map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
+        <!--
+    Include the maps javascript with sensor=true because this code is using a
+    sensor (a GPS locator) to determine the user's location.
+    See: https://developers.google.com/maps/documentation/javascript/tutorial#Loading_the_Maps_API
+    -->
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
 
-    			  // Try W3C Geolocation (Preferred)
-    			  if(navigator.geolocation) {
-    			    browserSupportFlag = true;
-    			    navigator.geolocation.getCurrentPosition(function(position) {
-    			      initialLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
-    			      map.setCenter(initialLocation);
-    			    }, function() {
-    			      handleNoGeolocation(browserSupportFlag);
-    			    });
-    			  }
-    			  // Browser doesn't support Geolocation
-    			  else {
-    			    browserSupportFlag = false;
-    			    handleNoGeolocation(browserSupportFlag);
-    			  }
+    <script>
+// Note: This example requires that you consent to location sharing when
+// prompted by your browser. If you see a blank space instead of the map, this
+// is probably because you have denied permission for location sharing.
 
-    			  function handleNoGeolocation(errorFlag) {
-    			    if (errorFlag == true) {
-    			      alert("Geolocation service failed.");
-    			      initialLocation = newyork;
-    			    } else {
-    			      alert("Your browser doesn't support geolocation. We've placed you in Siberia.");
-    			      initialLocation = siberia;
-    			    }
-    			    map.setCenter(initialLocation);
-    			  }
-      }
+var map;
+
+function initialize() {
+  var mapOptions = {
+    zoom: 6
+  };
+  map = new google.maps.Map(document.getElementById('map-canvas'),
+      mapOptions);
+
+  // Try HTML5 geolocation
+  if(navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = new google.maps.LatLng(position.coords.latitude,
+                                       position.coords.longitude);
+
+      var infowindow = new google.maps.InfoWindow({
+        map: map,
+        position: pos,
+        content: 'Location found using HTML5.'
+      });
+
+      map.setCenter(pos);
+    }, function() {
+      handleNoGeolocation(true);
+    });
+  } else {
+    // Browser doesn't support Geolocation
+    handleNoGeolocation(false);
+  }
+}
+
+function handleNoGeolocation(errorFlag) {
+  if (errorFlag) {
+    var content = 'Error: The Geolocation service failed.';
+  } else {
+    var content = 'Error: Your browser doesn\'t support geolocation.';
+  }
+
+  var options = {
+    map: map,
+    position: new google.maps.LatLng(60, 105),
+    content: content
+  };
+
+  var infowindow = new google.maps.InfoWindow(options);
+  map.setCenter(options.position);
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
     </script>
     
     
