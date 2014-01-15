@@ -33,6 +33,8 @@ function initialize() {
   };
   map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
+  
+  
 
   // Try HTML5 geolocation
   if(navigator.geolocation) {
@@ -40,6 +42,12 @@ function initialize() {
       var pos = new google.maps.LatLng(position.coords.latitude,
                                        position.coords.longitude);
 
+      var marker = new google.maps.Marker({
+          position: pos,
+          map: map,
+          title: 'Hello World!'
+      });
+      
       var infowindow = new google.maps.InfoWindow({
         map: map,
         position: pos,
