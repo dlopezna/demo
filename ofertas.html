@@ -1,0 +1,120 @@
+<html>
+  <head>
+  
+  
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" media="screen"/>
+    
+    <script>
+  $(function() {
+	  
+	  $( "#oferta_activa" ).buttonset();
+	 
+	  $( "button:first" ).button({
+		     icons: {
+		       primary: "ui-icon-plusthick"
+		     }
+		    });
+		    
+		    $(".eliminar").button({
+		      icons: {
+		        primary: "ui-icon-trash"
+		      },
+		      text:false
+		    });
+		    
+		$(".eliminar").click(function(){
+			
+			$(this).parent().hide();
+			
+		});
+  });
+  </script>
+  
+  <style>
+  	#button_section .ui-button-text-icon-primary .ui-button-text, .ui-button-text-icons .ui-button-text {padding: 1em 1em 1em 1em;}
+  	.oferta{border:1px groove; padding: 0.4em;border-radius:3px;margin-top:5px;}
+  	.oferta span{display:block;float:left;}
+  	.oferta .descripcion{max-height:100px;overflow-y:scroll; }
+  	.oferta button{display:block;float:left;}
+  	.oferta #oferta_activa{display:inline;}
+  </style>
+  
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>Code WhatsOn</title>
+  
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>WhatsOn</h1>
+          <h2>Ofertas</h2>       
+        </header>
+
+         <hr>
+		<section id="resumen_content">
+       		Ofertas publicadas: 3/10<br/>
+       	</section>
+        <section id="button_section">
+       		<button onclick="location.href ='ofertas.html';">Nueva ofertas</button>
+        </section>
+		
+		<section id="ofertas">
+       		<div class="oferta">
+       			<span class="descripcion">
+       				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum molestie egestas sodales. Etiam aliquet felis eu augue sodales ultricies. Ut dapibus neque vel erat semper, ac sagittis ante mattis. Fusce lobortis, urna ac hendrerit rutrum, ligula urna rhoncus quam, nec gravida velit urna eget nisi. Integer sit amet volutpat ante, id accumsan ante. Mauris ante metus, pretium ut tristique porta, facilisis eleifend magna. Proin a eleifend arcu, molestie aliquet eros. Sed tristique tincidunt mi lobortis varius. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec et dolor ultrices, mollis mauris sed, dictum dolor. Integer pulvinar placerat metus, nec sagittis turpis. Praesent sed ultricies purus, sed faucibus purus. Fusce fringilla facilisis risus. Proin dapibus quam in molestie sagittis. In hac habitasse platea dictumst. Nunc rhoncus quam eget ipsum tempor lobortis
+       			</span>
+       			<button class="eliminar">Eliminar</button>
+       			<div id="oferta_activa">
+    				<input type="radio" id="si" name="oferta_activa" value="0" checked="checked"><label for="si" title="publicar">si</label>
+    				<input type="radio" id="no" name="oferta_activa" value="1" ><label for="no" title="no publicar">no</label>
+  				</div>
+       			<div style="clear:both"></div>
+       		</div>
+       		<div class="oferta">
+       			<span class="descripcion">
+       				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum molestie egestas sodales. Etiam aliquet felis eu augue sodales ultricies. Ut dapibus neque vel erat semper, ac sagittis ante mattis. Fusce lobortis, urna ac hendrerit rutrum, ligula urna rhoncus quam, nec gravida velit urna eget nisi. Integer sit amet volutpat ante, id accumsan ante. Mauris ante metus, pretium ut tristique porta, facilisis eleifend magna. Proin a eleifend arcu, molestie aliquet eros. Sed tristique tincidunt mi lobortis varius. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec et dolor ultrices, mollis mauris sed, dictum dolor. Integer pulvinar placerat metus, nec sagittis turpis. Praesent sed ultricies purus, sed faucibus purus. Fusce fringilla facilisis risus. Proin dapibus quam in molestie sagittis. In hac habitasse platea dictumst. Nunc rhoncus quam eget ipsum tempor lobortis
+       			</span>
+       			<button class="eliminar">Eliminar</button>
+       			<div id="oferta_activa">
+    				<input type="radio" id="si" name="oferta_activa" value="0" checked="checked"><label for="si" title="publicar">si</label>
+    				<input type="radio" id="no" name="oferta_activa" value="1" ><label for="no" title="no publicar">no</label>
+  				</div>
+       			<div style="clear:both"></div>
+       		</div>
+       		<div class="oferta">
+       			<span class="descripcion">
+       				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum molestie egestas sodales. Etiam aliquet felis eu augue sodales ultricies. Ut dapibus neque vel erat semper, ac sagittis ante mattis. Fusce lobortis, urna ac hendrerit rutrum, ligula urna rhoncus quam, nec gravida velit urna eget nisi. Integer sit amet volutpat ante, id accumsan ante. Mauris ante metus, pretium ut tristique porta, facilisis eleifend magna. Proin a eleifend arcu, molestie aliquet eros. Sed tristique tincidunt mi lobortis varius. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec et dolor ultrices, mollis mauris sed, dictum dolor. Integer pulvinar placerat metus, nec sagittis turpis. Praesent sed ultricies purus, sed faucibus purus. Fusce fringilla facilisis risus. Proin dapibus quam in molestie sagittis. In hac habitasse platea dictumst. Nunc rhoncus quam eget ipsum tempor lobortis
+       			</span>
+       			<button class="eliminar">Eliminar</button>
+       			<div id="oferta_activa">
+    				<input type="radio" id="si" name="oferta_activa" value="0" checked="checked"><label for="si" title="publicar">si</label>
+    				<input type="radio" id="no" name="oferta_activa" value="1" ><label for="no" title="no publicar">no</label>
+  				</div>
+       			<div style="clear:both"></div>
+       		</div>
+       		
+        </section>
+		
+        <footer>
+          Demo is maintained by <a href="https://github.com/dlopezna">dlopezna</a><br>
+          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
+    </div>
+  </body>
+</html>

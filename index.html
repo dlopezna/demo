@@ -12,237 +12,32 @@
     <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" media="screen"/>
     
-    <style>
-      #map-canvas {
-        height: 400px;
-        margin: 0px;
-        padding: 0px
-      }
-      
-      .ui-button-text-only .ui-button-text {padding: 0.4em 0.8em;}
-    </style>
-    <script src="javascripts/calculate.js"></script>
-        <!--
-    Include the maps javascript with sensor=true because this code is using a
-    sensor (a GPS locator) to determine the user's location.
-    See: https://developers.google.com/maps/documentation/javascript/tutorial#Loading_the_Maps_API
-    -->
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
-
     <script>
-// Note: This example requires that you consent to location sharing when
-// prompted by your browser. If you see a blank space instead of the map, this
-// is probably because you have denied permission for location sharing.
-
-	var map;
-    var myCurrentLocation=new google.maps.LatLng(37.3335567,-5.9269874)
-    var montequinto =new google.maps.LatLng(37.3335567,-5.9269874)
-    var sevillaEste = new google.maps.LatLng(37.3977597,-5.9268797)
-    var bormujos = new google.maps.LatLng(37.3722503,-6.0701344)
-    var utrera = new google.maps.LatLng(37.1848134,-5.7795147)
-    var  draw_circle;
-    
-    var markers = [];
-    
-function initialize() {
-  var mapOptions = {
-    zoom: 13,
-    center: myCurrentLocation
-  };
-  map = new google.maps.Map(document.getElementById('map-canvas'),
-      mapOptions);
-  
-  var marker = new google.maps.Marker({
-	  icon:'https://dl.dropboxusercontent.com/u/3306712/mapiconscollection/coffee.png',
-      position: myCurrentLocation,
-      map: map,
-      title: 'Hello World!'
-  });
-  
-  var r= $( "#slider-radio" ).slider("value");
-  
- draw_circle = new google.maps.Circle({
-      center: myCurrentLocation,
-      radius: r,
-      strokeColor: "#FF0000",
-      strokeOpacity: 0.6,
-      strokeWeight: 1,
-      fillColor: "#FF0000",
-      fillOpacity: 0.35,
-      map: map 
-  });
-  
-  mostrarCercanos(myCurrentLocation);
-  // Try HTML5 geolocation
-  /*if(navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      var pos = new google.maps.LatLng(position.coords.latitude,
-                                       position.coords.longitude);
-
-      var marker = new google.maps.Marker({
-          position: pos,
-          map: map,
-          title: 'Hello World!'
-      });
-      
-      var infowindow = new google.maps.InfoWindow({
-        map: map,
-        position: pos,
-        content: 'Location found using HTML5.'
-      });
-
-      map.setCenter(pos);
-    }, function() {
-      handleNoGeolocation(true);
+  $(function() {
+    $( "button:first" ).button({
+      icons: {
+        primary: "ui-icon-tag"
+      },
+    }).next().button({
+      icons: {
+        primary: "ui-icon-pin-s"
+      }
+    }).next().button({
+      icons: {
+        primary: "ui-icon-gear",
+      }
+    }).next().button({
+      icons: {
+        primary: "ui-icon-info",
+      },
     });
-  } else {
-    // Browser doesn't support Geolocation
-    handleNoGeolocation(false);
-  }*/
-}
-
-function handleNoGeolocation(errorFlag) {
-  if (errorFlag) {
-    var content = 'Error: The Geolocation service failed.';
-  } else {
-    var content = 'Error: Your browser doesn\'t support geolocation.';
-  }
-
-  var options = {
-    map: map,
-    position: new google.maps.LatLng(60, 105),
-    content: content
-  };
-
-  var infowindow = new google.maps.InfoWindow(options);
-  map.setCenter(options.position);
-}
-
-function contarEnRadio(){
-
-	var count=0;
-	var LatLngBounds = draw_circle.getBounds();
-	$.each(markers, function(i,marker){  
-		if(marker.map!=null){
-			if (LatLngBounds.contains(marker.position)){count++;}
-		}
-	});
-	
-	return count;
-
-}
-
-
-function mostrarCercanos(currentLocation){
-	
-	var lat = currentLocation.lat();
-	var lng =currentLocation.lng();
-	var LatLngBounds = draw_circle.getBounds();
-	var count=0;
-	
-	calculate(1000,lat.toString(), lng.toString(),"F",100 );
-	calculate(1000,lat.toString(), lng.toString(),"M",100 );
-	calculate(600,lat.toString(), lng.toString(),"F",25 );
-	calculate(600,lat.toString(), lng.toString(),"M",25 );
-	calculate(150,lat.toString(), lng.toString(),"F",15 );
-	calculate(150,lat.toString(), lng.toString(),"M",15 );
-	/*calculate(1000,lat.toString(), lng.toString(),"F",10 );
-	calculate(1000,lat.toString(), lng.toString(),"M",10 );
-	
-	calculate(200,lat.toString(), lng.toString(),"F",1 );
-	calculate(200,lat.toString(), lng.toString(),"M",1 );*/	
-	
-	count = contarEnRadio();
-	$('#usuarios').html(count);
-	
-	 
-}
-
-google.maps.event.addDomListener(window, 'load', initialize);
-
-    </script>
-    
-    
-     
-  
-     <script type="text/javascript">
-    $(function() {
-  
-    	$( "#sexo" ).buttonset();
-    	
-    	$( "#sexo" ).change(function(){
-    		var s=$('input[name=sexo]:radio:checked').val();
-    		
-    		var count=0;
-    		var LatLngBounds = draw_circle.getBounds();
-    	   $.each(markers, function(i,marker){    	
-    		   if(s=="0"){marker.setMap(map);}//Ver todos
-    		   else if(s=="1"){if(marker.get("sexo")=="F"){marker.setMap(null);}else{ marker.setMap(map);}}//Ver Hombres
-    		   else if(s=="2"){if(marker.get("sexo")=="F"){marker.setMap(map);}else{ marker.setMap(null);}}//Ver Mujeres
-			});
-    	   
-    	   count = contarEnRadio();
-    	   $('#usuarios').html(count);  
-    	});
-    	
-    	$( "#slider-range" ).slider({
-      		range: true,
-      		min: 16,
-      		max: 100,
-      		values: [ 16, 50 ],
-      		slide: function( event, ui ) {
-        			$( "#amount" ).html( "entre " + ui.values[ 0 ] + " - " + ui.values[ 1 ] );
-        			        			
-        			 $.each(markers, function(i,marker){  
-        				 var edad=marker.get("edad");
-        				 if( edad >= ui.values[ 0 ] && edad <= ui.values[ 1 ]){marker.setMap(map)}else{marker.setMap(null);}
-        			});
-        			 
-        			 var count=0;
-        			 count = contarEnRadio();
-        	    	 $('#usuarios').html(count);  
-        			 
-        			 
-      		}
-    	});
-    	
-    	$( "#amount" ).html("entre " + $( "#slider-range" ).slider( "values", 0 ) +
-      	" - " + $( "#slider-range" ).slider( "values", 1 ) );
-    	
-    	$( "#slider-radio" ).slider({min:100,max:10000,value:500,
-    		slide: function( event, ui ) {
-    			$( "#radio" ).html( ui.value + ' m.' );
-    			draw_circle.setRadius(ui.value);
-			
-    			var count=0;
-    			count = contarEnRadio();
-				$('#usuarios').html(count);  				
-    		}	
-    	});
-    	$( "#radio" ).html($( "#slider-radio" ).slider("value") + ' m.' );
-    	
-    	$("#currentLocation").change(function(){
-    		switch($("#currentLocation").val()){
-    		case "1":
-    			myCurrentLocation=montequinto;
-    			break;
-    		case "2":
-    			myCurrentLocation=bormujos;
-    			break;
-    		case "3":
-    			myCurrentLocation=utrera;
-    			break;
-    		case "4":
-    			myCurrentLocation=sevillaEste;
-    			break;
-    		
-    		}
-    		initialize();
-    	});
-    	
-    });
+  });
   </script>
-    
+  
+  <style>
+  	#main_content .ui-button-text-icon-primary .ui-button-text, .ui-button-text-icons .ui-button-text {padding: 2em 2em 2em 2em;}
+  </style>
+  
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -256,52 +51,23 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
         <header>
           <h1>WhatsOn</h1>
-          <h2>Demo envio mensajes</h2>
-          
-          Mi ubicación: 
-          <select id="currentLocation">
-          <option value="1">A</option>
-          <option value="2">B</option>
-          <option value="3">C</option>
-          <option value="4">D</option>
-          </select>
+          <h2>Página principal</h2>       
         </header>
 
          <hr>
 
         <section id="main_content">
-        <div id="left_content">
-         <h3>Mensaje</h3>
-         <textarea style="width:100%;height: 120px;">Test de envio!</textarea>
-          <h3>Filtros</h3>
-          <label for="amount">Edad:</label>
-  		  <label id="amount" style="border:0; color:#f6931f; font-weight:bold;"></label>
-          <div id="slider-range"></div>
-          Sexo: 
-          <div id="sexo">
-    <input type="radio" id="sexo1" name="sexo" value="0" checked="checked"><label for="sexo1">Todos</label>
-    <input type="radio" id="sexo2" name="sexo" value="1" ><label for="sexo2">Hombres</label>
-    <input type="radio" id="sexo3" name="sexo" value="2"><label for="sexo3">Mujeres</label>
-  </div>
-          
-        <label for="radio">Radio:</label>
-  		  <label id="radio" style="border:0; color:#f6931f; font-weight:bold;"></label>
-          <div id="slider-radio"></div>
-          <br/>
-          El mensaje será enviado a <label id="usuarios"></label> usuarios
-          <br/>
-          <br/>
-          <input type="submit" value="Enviar"/>
-        </div>
-        
-        
-        <div id="right_content">
-         <h3>Mapa</h3>
-        	<div id="map-canvas"></div>
-        </div>
-        <div style="clear:both"></div>
+       		<button onclick="location.href ='ofertas.html';">Ofertas</button>
+			<button onclick="location.href ='mapa.html';">Mapa</button>
+			<button onclick="location.href ='config.html';">Configuración</button>
+			<button>Información</button>
         </section>
-
+		<section id="resumen_content">
+       		Usuarios conectados: 150<br/>
+       		Mensajes enviados: 645<br/>
+       		Ofertas activas: 10<br/>
+       	</section>
+		
         <footer>
           Demo is maintained by <a href="https://github.com/dlopezna">dlopezna</a><br>
           This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
