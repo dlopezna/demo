@@ -93,7 +93,7 @@ header h2 {
   width: 1024px;
   margin: 0 auto;
 }
-.inner #left_content{width:404px;float:left;}
+.inner #left_content{width:300px;float:left;margin-right: 50px;}
 .inner #right_content{width:620px;float:left;}
 #container .inner img {
   max-width: 100%;
