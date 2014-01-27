@@ -15,13 +15,12 @@
     <script>
   $(function() {
 	  
-	  $( "#oferta_activa" ).buttonset();
+	  $(".oferta_activa").buttonset();
+	  //$("#chk2").buttonset();
 	 
-	  $( "button:first" ).button({
-		     icons: {
-		       primary: "ui-icon-plusthick"
-		     }
-		    });
+	  $( "#header_button_section button:first" ).button();
+	  $( "#button_section button:first" ).button();
+	  
 		    
 		    $(".eliminar").button({
 		      icons: {
@@ -30,21 +29,49 @@
 		      text:false
 		    });
 		    
+		    $(".enviar").button({
+			      icons: {
+			        primary: "ui-icon-mail-closed"
+			      }
+			    });
+		    
+		    
 		$(".eliminar").click(function(){
 			
 			$(this).parent().hide();
 			
 		});
+		
+		$( "#config" ).button({text: false,icons: {primary: "ui-icon-gear"}})
+		$( "#inicio" ).button({text: false,icons: {primary: "ui-icon-home"}})
+		$( "#ofertas" ).button({text: false,icons: {primary: "ui-icon-tag"}})
+		$( "#mapa" ).button({text: false,icons: {primary: "ui-icon-pin-s"}})
+		
+	        
+		
+		
   });
   </script>
   
   <style>
   	#button_section .ui-button-text-icon-primary .ui-button-text, .ui-button-text-icons .ui-button-text {padding: 1em 1em 1em 1em;}
-  	.oferta{border:1px groove; padding: 0.4em;border-radius:3px;margin-top:5px;}
+  	.oferta{border:1px groove; padding: 0.4em;border-radius:3px;margin-top:5px;background-color: white;}
   	.oferta span{display:block;float:left;}
   	.oferta .descripcion{max-height:100px;overflow-y:scroll; }
   	.oferta button{display:block;float:left;}
-  	.oferta #oferta_activa{display:inline;}
+  	.oferta .oferta_activa{display:inline;}
+  	
+  	.oferta_activa label{font-weight: normal;}
+  	.oferta_activa label.s {padding-left:20px;text-align:left;-webkit-border-top-left-radius: 5px; -webkit-border-bottom-left-radius: 5px; -moz-border-radius-topleft: 5px; -moz-border-radius-bottomleft: 5px; border-top-left-radius: 5px; border-bottom-left-radius: 5px;}
+	.oferta_activa label.n {padding-right:20px;text-align:right;-webkit-border-top-right-radius: 5px; -webkit-border-bottom-right-radius: 5px; -moz-border-radius-topright: 5px; -moz-border-radius-bottomright: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px;}
+  	
+  	.oferta_activa label.s.ui-state-active {background:none;background-color:#8dc54f;color:#fff;border:1px solid #74a63d;-moz-box-shadow: 0 0 8px 0 #8dc54f;-webkit-box-shadow: 0 0 8px 0 #8dc54f;box-shadow: 0 0 8px 0 #8dc54f;}
+	.oferta_activa label.n.ui-state-active {background:none;background-color:#7c7c7c;color:#fff;border:1px solid #767676;-moz-box-shadow: 0 0 8px 0 #7a7a7a;-webkit-box-shadow: 0 0 8px 0 #7a7a7a;box-shadow: 0 0 8px 0 #7a7a7a;}
+	.oferta .fecha_desde, .oferta .fecha_hasta{padding:8px;font-size: 15px;outline-color: #4d90fe;width: 95px;}
+	.oferta label{font-weight: bold;}
+	.oferta .eliminar{float:right;}
+	.oferta .enviar{float:right;margin-right: 10px;}
+	.oferta span.titulo{font-weight: bold;font-size: 15px;height: 25px;}}
   </style>
   
     <!--[if lt IE 9]>
@@ -60,52 +87,92 @@
 
         <header>
           <h1>WhatsOn</h1>
-          <h2>Ofertas</h2>       
+          <h2>Ofertas</h2>
+          <section id="header_button_section">
+       		<div style="float:right;">
+       			<button id="inicio" onclick="location.href ='index.html';">inicio</button>
+       			<button id="ofertas" onclick="location.href ='ofertas.html';">mis ofertas</button>
+	    		<button id="mapa" onclick="location.href ='mapa.html';">ver mapa</button>
+	    		<button id="config" onclick="location.href ='ofertas.html';">ajustes</button>
+  			</div>
+ 
+        	</section>       
         </header>
 
          <hr>
 		<section id="resumen_content">
-       		Ofertas publicadas: 3/10<br/>
+       		Ofertas: 3/10<br/>
        	</section>
         <section id="button_section">
-       		<button onclick="location.href ='ofertas.html';">Nueva ofertas</button>
+       		<button onclick="location.href ='ofertas.html';">Nueva oferta</button>
         </section>
 		
 		<section id="ofertas">
-       		<div class="oferta">
+       		<div  class="oferta">
+       			<span class="titulo">Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
        			<span class="descripcion">
-       				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum molestie egestas sodales. Etiam aliquet felis eu augue sodales ultricies. Ut dapibus neque vel erat semper, ac sagittis ante mattis. Fusce lobortis, urna ac hendrerit rutrum, ligula urna rhoncus quam, nec gravida velit urna eget nisi. Integer sit amet volutpat ante, id accumsan ante. Mauris ante metus, pretium ut tristique porta, facilisis eleifend magna. Proin a eleifend arcu, molestie aliquet eros. Sed tristique tincidunt mi lobortis varius. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec et dolor ultrices, mollis mauris sed, dictum dolor. Integer pulvinar placerat metus, nec sagittis turpis. Praesent sed ultricies purus, sed faucibus purus. Fusce fringilla facilisis risus. Proin dapibus quam in molestie sagittis. In hac habitasse platea dictumst. Nunc rhoncus quam eget ipsum tempor lobortis
+       				Vestibulum molestie egestas sodales. Etiam aliquet felis eu augue sodales ultricies. Ut dapibus neque vel erat semper, ac sagittis ante mattis. Fusce lobortis, urna ac hendrerit rutrum, ligula urna rhoncus quam, nec gravida velit urna eget nisi. Integer sit amet volutpat ante, id accumsan ante. Mauris ante metus, pretium ut tristique porta, facilisis eleifend magna. Proin a eleifend arcu, molestie aliquet eros. Sed tristique tincidunt mi lobortis varius. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec et dolor ultrices, mollis mauris sed, dictum dolor. Integer pulvinar placerat metus, nec sagittis turpis. Praesent sed ultricies purus, sed faucibus purus. Fusce fringilla facilisis risus. Proin dapibus quam in molestie sagittis. In hac habitasse platea dictumst. Nunc rhoncus quam eget ipsum tempor lobortis
        			</span>
-       			<button class="eliminar">Eliminar</button>
-       			<div id="oferta_activa">
-    				<input type="radio" id="si" name="oferta_activa" value="0" checked="checked"><label for="si" title="publicar">si</label>
-    				<input type="radio" id="no" name="oferta_activa" value="1" ><label for="no" title="no publicar">no</label>
+       			 <div style="clear:both"></div>
+       			 <hr/>
+       			
+       			<label>Publicado:</label>
+       			<div class="oferta_activa">
+    				<input type="radio" id="si1" name="oferta_activa1" value="0" checked="checked"><label for="si1" class="s"  title="publicar">si</label>
+    				<input type="radio" id="no1" name="oferta_activa1" value="1" ><label for="no1" class="n"  title="no publicar">no</label>
   				</div>
-       			<div style="clear:both"></div>
-       		</div>
-       		<div class="oferta">
-       			<span class="descripcion">
-       				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum molestie egestas sodales. Etiam aliquet felis eu augue sodales ultricies. Ut dapibus neque vel erat semper, ac sagittis ante mattis. Fusce lobortis, urna ac hendrerit rutrum, ligula urna rhoncus quam, nec gravida velit urna eget nisi. Integer sit amet volutpat ante, id accumsan ante. Mauris ante metus, pretium ut tristique porta, facilisis eleifend magna. Proin a eleifend arcu, molestie aliquet eros. Sed tristique tincidunt mi lobortis varius. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec et dolor ultrices, mollis mauris sed, dictum dolor. Integer pulvinar placerat metus, nec sagittis turpis. Praesent sed ultricies purus, sed faucibus purus. Fusce fringilla facilisis risus. Proin dapibus quam in molestie sagittis. In hac habitasse platea dictumst. Nunc rhoncus quam eget ipsum tempor lobortis
-       			</span>
-       			<button class="eliminar">Eliminar</button>
-       			<div id="oferta_activa">
-    				<input type="radio" id="si" name="oferta_activa" value="0" checked="checked"><label for="si" title="publicar">si</label>
-    				<input type="radio" id="no" name="oferta_activa" value="1" ><label for="no" title="no publicar">no</label>
-  				</div>
-       			<div style="clear:both"></div>
-       		</div>
-       		<div class="oferta">
-       			<span class="descripcion">
-       				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum molestie egestas sodales. Etiam aliquet felis eu augue sodales ultricies. Ut dapibus neque vel erat semper, ac sagittis ante mattis. Fusce lobortis, urna ac hendrerit rutrum, ligula urna rhoncus quam, nec gravida velit urna eget nisi. Integer sit amet volutpat ante, id accumsan ante. Mauris ante metus, pretium ut tristique porta, facilisis eleifend magna. Proin a eleifend arcu, molestie aliquet eros. Sed tristique tincidunt mi lobortis varius. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec et dolor ultrices, mollis mauris sed, dictum dolor. Integer pulvinar placerat metus, nec sagittis turpis. Praesent sed ultricies purus, sed faucibus purus. Fusce fringilla facilisis risus. Proin dapibus quam in molestie sagittis. In hac habitasse platea dictumst. Nunc rhoncus quam eget ipsum tempor lobortis
-       			</span>
-       			<button class="eliminar">Eliminar</button>
-       			<div id="oferta_activa">
-    				<input type="radio" id="si" name="oferta_activa" value="0" checked="checked"><label for="si" title="publicar">si</label>
-    				<input type="radio" id="no" name="oferta_activa" value="1" ><label for="no" title="no publicar">no</label>
-  				</div>
+  				<label>Fecha desde:</label> <input type="text" placeholder="dd/mm/aaaa" class="fecha_desde" value="01/01/2014"/>
+  				<label>Fecha hasta:</label> <input type="text" placeholder="dd/mm/aaaa" class="fecha_hasta" value="01/06/2014"/>
+  				<button class="eliminar">Eliminar</button>
+  				<button onclick="location.href ='mapa.html';" class="enviar">Enviar</button>
+  				
+  				
        			<div style="clear:both"></div>
        		</div>
        		
+       		<div  class="oferta">
+       			<span class="titulo">Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
+       			<span class="descripcion">
+       				Vestibulum molestie egestas sodales. Etiam aliquet felis eu augue sodales ultricies. Ut dapibus neque vel erat semper, ac sagittis ante mattis. Fusce lobortis, urna ac hendrerit rutrum, ligula urna rhoncus quam, nec gravida velit urna eget nisi. Integer sit amet volutpat ante, id accumsan ante. Mauris ante metus, pretium ut tristique porta, facilisis eleifend magna. Proin a eleifend arcu, molestie aliquet eros. Sed tristique tincidunt mi lobortis varius. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec et dolor ultrices, mollis mauris sed, dictum dolor. Integer pulvinar placerat metus, nec sagittis turpis. Praesent sed ultricies purus, sed faucibus purus. Fusce fringilla facilisis risus. Proin dapibus quam in molestie sagittis. In hac habitasse platea dictumst. Nunc rhoncus quam eget ipsum tempor lobortis
+       			</span>
+       			 <div style="clear:both"></div>
+       			 <hr/>
+       			
+       			<label>Publicado:</label>
+       			<div class="oferta_activa">
+    				<input type="radio" id="si2" name="oferta_activa2" value="0" ><label for="si2" class="s"  title="publicar">si</label>
+    				<input type="radio" id="no2" name="oferta_activa2" value="1" checked="checked"><label for="no2" class="n"  title="no publicar">no</label>
+  				</div>
+  				<label>Fecha desde:</label> <input type="text" placeholder="dd/mm/aaaa" class="fecha_desde" value="01/01/2014"/>
+  				<label>Fecha hasta:</label> <input type="text" placeholder="dd/mm/aaaa" class="fecha_hasta" value="01/06/2014"/>
+  				<button class="eliminar">Eliminar</button>
+  				<button onclick="location.href ='mapa.html';" class="enviar">Enviar</button>
+  				
+  				
+       			<div style="clear:both"></div>
+       		</div>
+       		
+       		<div  class="oferta">
+       			<span class="titulo">Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
+       			<span class="descripcion">
+       				Vestibulum molestie egestas sodales. Etiam aliquet felis eu augue sodales ultricies. Ut dapibus neque vel erat semper, ac sagittis ante mattis. Fusce lobortis, urna ac hendrerit rutrum, ligula urna rhoncus quam, nec gravida velit urna eget nisi. Integer sit amet volutpat ante, id accumsan ante. Mauris ante metus, pretium ut tristique porta, facilisis eleifend magna. Proin a eleifend arcu, molestie aliquet eros. Sed tristique tincidunt mi lobortis varius. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec et dolor ultrices, mollis mauris sed, dictum dolor. Integer pulvinar placerat metus, nec sagittis turpis. Praesent sed ultricies purus, sed faucibus purus. Fusce fringilla facilisis risus. Proin dapibus quam in molestie sagittis. In hac habitasse platea dictumst. Nunc rhoncus quam eget ipsum tempor lobortis
+       			</span>
+       			 <div style="clear:both"></div>
+       			 <hr/>
+       			
+       			<label>Publicado:</label>
+       			<div class="oferta_activa">
+    				<input type="radio" id="si3" name="oferta_activa3" value="0" ><label for="si3" class="s"  title="publicar">si</label>
+    				<input type="radio" id="no3" name="oferta_activa3" value="1" checked="checked"><label for="no3" class="n"  title="no publicar">no</label>
+  				</div>
+  				<label>Fecha desde:</label> <input type="text" placeholder="dd/mm/aaaa" class="fecha_desde" value="01/01/2014"/>
+  				<label>Fecha hasta:</label> <input type="text" placeholder="dd/mm/aaaa" class="fecha_hasta" value="01/06/2014"/>
+  				<button class="eliminar">Eliminar</button>
+  				<button onclick="location.href ='mapa.html';" class="enviar">Enviar</button>
+  				
+  				
+       			<div style="clear:both"></div>
+       		</div>
         </section>
 		
         <footer>
