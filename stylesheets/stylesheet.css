@@ -93,8 +93,8 @@ header h2 {
   width: 1024px;
   margin: 0 auto;
 }
-.inner #left_content{width:300px;float:left;margin-right: 50px;}
-.inner #right_content{width:620px;float:left;}
+.inner #left_content{width:300px;position:absolute;z-index: 10001;padding-top: 10px;padding-left: 10px;}
+.inner #right_content{width:100%;margin-top:10px;}
 #container .inner img {
   max-width: 100%;
 }
